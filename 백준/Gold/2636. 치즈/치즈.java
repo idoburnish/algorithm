@@ -22,7 +22,6 @@ public class Main {
         queue.add(new int[]{x, y});
 
         boolean[][] visit = new boolean[col][row];
-        visit[0][0] = true;
         visit[x][y] = true;
 
         int cnt = 0;
@@ -34,8 +33,7 @@ public class Main {
                 int ny = cur[1] + dy[i];
                 if (nx < 0 || ny < 0 || nx >= col || ny >= row || visit[nx][ny]) continue;
 
-                if (arr[nx][ny] == 0)
-                    queue.add(new int[]{nx, ny});
+                if (arr[nx][ny] == 0) queue.add(new int[]{nx, ny});
                 else {
                     arr[nx][ny] = 0;
                     cnt++;
