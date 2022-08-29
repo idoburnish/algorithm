@@ -19,7 +19,7 @@ public class Main {
 //            cnt--;
 //        }
 
-        PriorityQueue<Integer> pqueue = map.getOrDefault(name, new PriorityQueue<>(Collections.reverseOrder()));
+        PriorityQueue<Integer> pqueue = map.getOrDefault(name, new PriorityQueue<>());
         for (int i=0; i<cnt; i++) {
             if (pqueue.isEmpty()) break;
             answer += pqueue.poll();
