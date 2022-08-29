@@ -13,10 +13,16 @@ public class Main {
     }
 
     public static void buy(String name, int cnt) {
-        if (map.get(name) == null) return;
-        while (!map.get(name).isEmpty() && cnt > 0) {
-            answer += map.get(name).poll();
-            cnt--;
+//        if (map.get(name) == null) return;
+//        while (!map.get(name).isEmpty() && cnt > 0) {
+//            answer += map.get(name).poll();
+//            cnt--;
+//        }
+
+        PriorityQueue<Integer> pqueue = map.getOrDefault(name, new PriorityQueue<>(Collections.reverseOrder()));
+        for (int i=0; i<cnt; i++) {
+            if (pqueue.isEmpty()) break;
+            answer += pqueue.poll();
         }
     }
 
