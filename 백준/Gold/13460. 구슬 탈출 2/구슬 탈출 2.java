@@ -4,7 +4,6 @@ import java.io.*;
 // 구슬 탈출 2
 public class Main {
     static char[][] map;
-    static boolean[][] visit;
     static Queue<int[]> queue = new LinkedList<>();
 
     static int[] dx = {-1, 0, 1, 0};
@@ -19,7 +18,6 @@ public class Main {
             for (int i=0; i<len; i++) {
                 int[] cur = queue.poll();
 
-//                System.out.println(answer + " " + Arrays.toString(cur));
                 for (int k=0; k<4; k++) {
                     boolean isRedHole = false, isBlueHole = false;
 
@@ -43,7 +41,7 @@ public class Main {
 
                     if (isBlueHole) continue;
                     if (isRedHole) return answer;
-//                    if (visit[nxR][nyR]) continue;
+                    
                     if (nxR == nxB && nyR == nyB) {
                         if (k == 0) {           // 상
                             if (cur[0] < cur[2]) nxB -= dx[k];
@@ -64,7 +62,6 @@ public class Main {
                     }
 
                     queue.offer(new int[] {nxR, nyR, nxB, nyB});
-                    visit[nxR][nyR] = true;
                 }
             }
             answer++;
@@ -81,7 +78,6 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
 
         map = new char[N][M];
-        visit = new boolean[N][M];
         for (int i=0; i<N; i++) {
             String str = br.readLine();
             for (int j=0; j<M; j++) map[i][j] = str.charAt(j);
@@ -103,8 +99,6 @@ public class Main {
             }
         }
         queue.offer(bead);
-        visit[bead[0]][bead[1]] = true;
-
         System.out.println(BFS());
     }
 }
