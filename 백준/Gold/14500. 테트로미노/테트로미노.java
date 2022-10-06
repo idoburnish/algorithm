@@ -23,7 +23,7 @@ public class Main {
             if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
             if (!visit[nx][ny]) {
                 visit[nx][ny] = true;
-                DFS(nx, ny, cnt + 1, sum + map[x][y]);
+                DFS(nx, ny, cnt + 1, sum + map[nx][ny]);
                 visit[nx][ny] = false;
             }
         }
@@ -61,7 +61,7 @@ public class Main {
         for (int i=0; i<N; i++) {
             for (int j=0; j<M; j++) {
                 visit[i][j] = true;
-                DFS(i, j, 0, 0);
+                DFS(i, j, 1, map[i][j]);
                 visit[i][j] = false;
                 remainder(i, j);
             }
